@@ -135,6 +135,14 @@ namespace TigerGames4Kids.Controllers
         }
 
         //
+        // GET: /Account/ParentRegister
+        [AllowAnonymous]
+        public ActionResult ParentRegister()
+        {
+            return View();
+        }
+
+        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
