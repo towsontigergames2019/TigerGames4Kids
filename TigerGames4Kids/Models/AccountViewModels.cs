@@ -62,6 +62,65 @@ namespace TigerGames4Kids.Models
         public bool RememberMe { get; set; }
     }
 
+    public class ParentRegisterViewModel
+    {
+        [Required]
+        [StringLength(30, ErrorMessage = "The {0} must be at least{2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "First Name")]
+        public string ParentFirstName { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "The {0} must be at least{2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Last Name")]
+        public string ParentLastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "The {0} must be at least{2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Child First Name")]
+        public string ChildFirstName { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Child Birthday")]
+        public string ChildBirthDay { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "The {0} must be at least{2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Child User Name")]
+        public string ChildUserName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string ChildPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ChildConfirmPassword { get; set; }
+    }
+
     public class RegisterViewModel
     {
         [Required]

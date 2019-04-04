@@ -5,22 +5,30 @@
 <div class="jumbotron">
     <h1>TigerGames4Kids</h1>
     <p class="lead">Join TigerGames4Kids and start playing today!</p>
-    <p>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>
+    <p>@Html.ActionLink("Sign Up Your Child", "ParentRegister", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>
+    <p>@Html.ActionLink("Over 18 and Want to Play?", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>
 </div>
 
 <div class="row">
+
     <div class="col-md-4">
         <h2>What We Do</h2>
         <p>
             We provide the most up-to-date broswer games on the market as well as our custom in-house titles.
         </p>
     </div>
+
     <div class="col-md-4">
         <h2>Take Control</h2>
-        <p>Parents get access custom access to all child accounts. Keep your kids safe!</p>
+        <p>
+            Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
+        </p>
     </div>
+
     <div class="col-md-4">
         <h2>Leaderboards</h2>
-        <p>Think your the best? Show off your skills and compete for first place.</p>
+        <p>
+            Think your the best? Show off your skills and compete for first place.
+        </p>
     </div>
 </div>
