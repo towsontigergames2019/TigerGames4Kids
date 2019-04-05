@@ -242,9 +242,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Games\Random.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Account\ParentRegister.cshtml" />
-=======
     <None Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <None Include="Scripts\umd\popper.js.map" />
@@ -293,7 +291,6 @@
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\variables.scss" />
     <Content Include="Content\bootswatch.scss" />
->>>>>>> f1992d6... Upgrade bootstrap version and changed theme
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
