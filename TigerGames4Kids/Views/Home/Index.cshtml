@@ -3,32 +3,38 @@
 }
 
 <div class="jumbotron">
-    <h1>TigerGames4Kids</h1>
+    <h1 class="display-2">TigerGames4Kids</h1>
     <p class="lead">Join TigerGames4Kids and start playing today!</p>
-    <p>@Html.ActionLink("Sign Up Your Child", "ParentRegister", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>
-    <p>@Html.ActionLink("Over 18 and Want to Play?", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>
+    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("ParentRegister", "Account")';return false;">Sign Up Your Child</button>
+    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Register", "Account")';return false;">Over 18 and Want to Play?</button>
 </div>
 
 <div class="row">
 
-    <div class="col-md-4">
-        <h2>What We Do</h2>
-        <p>
-            We provide the most up-to-date broswer games on the market as well as our custom in-house titles.
-        </p>
-    </div>
+        <div class="card text-white bg-info mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px; display: inline-block">
+            <div class="card-body">
+                <h4 class="card-title">What We Do</h4>
+                We provide the most up-to-date broswer games on the market as well as our custom in-house titles.
+                </p>
+            </div>
+        </div>
 
-    <div class="col-md-4">
-        <h2>Take Control</h2>
-        <p>
-            Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
-        </p>
-    </div>
-
-    <div class="col-md-4">
-        <h2>Leaderboards</h2>
-        <p>
-            Think your the best? Show off your skills and compete for first place.
-        </p>
+        <div class="card text-white bg-success mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
+            <div class="card-body">
+                <h4 class="card-title">Take Control</h4>
+                <p>
+                    Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
+                </p>
+            </div>
+        </div>
+        &nbsp;
+        <div class="card text-white bg-warning mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
+            <div class="card-body">
+                <h4 class="card-title">Take Control</h4>
+                <p>
+                    Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
+                </p>
+            </div>
+        </div>
     </div>
 </div>
