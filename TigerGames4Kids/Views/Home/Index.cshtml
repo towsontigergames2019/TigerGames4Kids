@@ -7,34 +7,72 @@
     <p class="lead">Join TigerGames4Kids and start playing today!</p>
     <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("ParentRegister", "Account")';return false;">Sign Up Your Child</button>
     <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Register", "Account")';return false;">Over 18 and Want to Play?</button>
+    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Donation", "Home")';return false;">Donate</button>
 </div>
 
 <div class="row">
 
-        <div class="card text-white bg-info mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px; display: inline-block">
-            <div class="card-body">
-                <h4 class="card-title">What We Do</h4>
-                We provide the most up-to-date broswer games on the market as well as our custom in-house titles.
-                </p>
-            </div>
+    <div class="card text-white bg-info mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px; display: inline-block">
+        <div class="card-body">
+            <h4 class="card-title">What We Do</h4>
+            We provide the most up-to-date broswer games on the market as well as our custom in-house titles.
+            </p>
         </div>
+    </div>
 
-        <div class="card text-white bg-success mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
-            <div class="card-body">
-                <h4 class="card-title">Take Control</h4>
-                <p>
-                    Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
-                </p>
-            </div>
+    <div class="card text-white bg-success mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
+        <div class="card-body">
+            <h4 class="card-title">Take Control</h4>
+            <p>
+                Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
+            </p>
         </div>
-        &nbsp;
-        <div class="card text-white bg-warning mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
-            <div class="card-body">
-                <h4 class="card-title">Take Control</h4>
-                <p>
-                    Parents get custom access to all child accounts. See what your kids are doing and keep them safe!
-                </p>
-            </div>
+    </div>
+    &nbsp;
+    <div class="card text-white bg-warning mb-3 col-sm" style="max-width: 20rem;  margin-right: 30px">
+        <div class="card-body">
+            <h4 class="card-title">Keep Tigers Playing</h4>
+            <p>Donations help us get new games!</p>
+                <button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                        id="checkout-button-sku_EvgYbbP15hADRi"
+                        role="link">
+                    Donate Here!
+                </button>
+            
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3"></script>
+
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+
+    <script>var stripe = Stripe('pk_test_shXmbtUF5yWvNppctGKcerUp00tspybH8w');
+
+        var checkoutButton = document.getElementById('checkout-button-sku_EvgYbbP15hADRi');
+        checkoutButton.addEventListener('click', function () {
+            // When the customer clicks on the button, redirect
+            // them to Checkout.
+            stripe.redirectToCheckout({
+                items: [{ sku: 'sku_EvgYbbP15hADRi', quantity: 1 }],
+
+                // Note that it is not guaranteed your customers will be redirected to this
+                // URL *100%* of the time, it's possible that they could e.g. close the
+                // tab between form submission and the redirect.
+                successUrl: window.location.protocol + '//www.tigergames4kids.com/success',
+                cancelUrl: window.location.protocol + '//www.tigergames4kids.com/canceled',
+            })
+                .then(function (result) {
+                    if (result.error) {
+                        // If `redirectToCheckout` fails due to a browser or network
+                        // error, display the localized error message to your customer.
+                        var displayError = document.getElementById('error-message');
+                        displayError.textContent = result.error.message;
+                    }
+                });
+        });</script>
+}

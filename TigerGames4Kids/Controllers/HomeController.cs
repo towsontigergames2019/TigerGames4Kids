@@ -26,5 +26,13 @@ namespace TigerGames4Kids.Controllers
 
             return View();
         }
+
+        public ActionResult Donation()
+        {
+            ViewBag.Message = "Your Donation Page.";
+
+            return View();
+        }
+
     }
 }
