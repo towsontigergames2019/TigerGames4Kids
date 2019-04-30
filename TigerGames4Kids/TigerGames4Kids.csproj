@@ -293,6 +293,7 @@
     <Content Include="Content\bootswatch.scss" />
     <Content Include="Views\ParentPortal.cshtml" />
     <None Include="appsettings.json" />
+    <Content Include="Views\Home\Donation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
