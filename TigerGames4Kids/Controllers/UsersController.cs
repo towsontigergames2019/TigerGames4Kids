@@ -51,9 +51,11 @@ namespace TigerGames4Kids.Controllers
 
             user.ProfileImageURI = "https://www.gravatar.com/avatar/" + hash + "?s=200?r=pg&d=identicon";
 
+            user.Password = CreateMD5(user.Password);
+
             collection.InsertOne(user);
      
-            return RedirectToAction("Index");
+            return RedirectToAction("Home");
         }
     }
 }
