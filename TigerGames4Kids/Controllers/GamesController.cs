@@ -13,7 +13,7 @@ namespace TigerGames4Kids.Controllers
         // GET: Games/Random
         public ActionResult Random()
         {
-            var game = new Game() { Name = "Super Mario" };
+            var game = new GameType() { Title = "Super Mario" };
             return View(game);
         }
     }

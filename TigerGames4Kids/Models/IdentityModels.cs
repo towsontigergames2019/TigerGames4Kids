@@ -20,7 +20,7 @@ namespace TigerGames4Kids.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Game> Game { get; set; }
+        public DbSet<GameType> Game { get; set; }
         public DbSet<UserType> User { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

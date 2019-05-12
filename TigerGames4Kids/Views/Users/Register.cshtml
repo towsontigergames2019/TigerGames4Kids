@@ -1,0 +1,101 @@
+﻿@model TigerGames4Kids.Models.UserType
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Create", "Users"))
+{
+    @Html.AntiForgeryToken()
+    <h4 class="lead text-info">Create a new account and donate to our cause to play our games.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-secondary" value="Register" />
+
+            <button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                    id="checkout-button-sku_EvgYbbP15hADRi"
+                    role="link">
+                Donate to Start Playing!
+            </button>
+
+            <div id="error-message"></div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3"></script>
+
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+
+    <script>
+var stripe = Stripe('pk_test_shXmbtUF5yWvNppctGKcerUp00tspybH8w');
+
+        var checkoutButton = document.getElementById('checkout-button-sku_EvgYbbP15hADRi');
+        checkoutButton.addEventListener('click', function () {
+            // When the customer clicks on the button, redirect
+            // them to Checkout.
+            stripe.redirectToCheckout({
+                items: [{ sku: 'sku_EvgYbbP15hADRi', quantity: 1 }],
+
+                // Note that it is not guaranteed your customers will be redirected to this
+                // URL *100%* of the time, it's possible that they could e.g. close the
+                // tab between form submission and the redirect.
+                successUrl: window.location.protocol + '//www.tigergames4kids.com/success',
+                cancelUrl: window.location.protocol + '//www.tigergames4kids.com/canceled',
+            })
+                .then(function (result) {
+                    if (result.error) {
+                        // If `redirectToCheckout` fails due to a browser or network
+                        // error, display the localized error message to your customer.
+                        var displayError = document.getElementById('error-message');
+                        displayError.textContent = result.error.message;
+                    }
+                });
+        });
+    </script>
+}
