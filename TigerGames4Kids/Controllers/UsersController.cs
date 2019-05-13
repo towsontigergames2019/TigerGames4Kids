@@ -55,6 +55,8 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
+
+        // GET: Users/Register
         public ActionResult Register()
         {
             return View();
@@ -77,6 +79,7 @@ namespace TigerGames4Kids.Controllers
             return RedirectToAction("Home");
         }
 
+        // GET: Users/Login
         public ActionResult Login()
         {
             return View();
@@ -95,6 +98,7 @@ namespace TigerGames4Kids.Controllers
             if (userInfo[0] != null && verifyMd5Hash(user.Password, userInfo[0].Password))
             {
                 Session["Username"] = userInfo[0].Username;
+                Session["Name"] = userInfo[0].Name;
                 Session["Email"] = userInfo[0].Email;
                 Session["Age"] = userInfo[0].Age;
                 Session["ProfileImageURI"] = userInfo[0].ProfileImageURI;
@@ -107,11 +111,89 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
-        public ActionResult View()
+        // GET: Users/View
+        public ActionResult ViewUser()
+        {
+            if (Session["Username"] != null)
+            {
+                var user = new UserType();
+                user.Username = Session["Username"].ToString();
+                user.Email = Session["Email"].ToString();
+                user.Age = Int32.Parse(Session["Age"].ToString());
+                user.ProfileImageURI = Session["ProfileImageURI"].ToString();
+                user.Name = Session["Name"].ToString();
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
+        }
+
+        // GET: Users/Edit
+        public ActionResult Edit()
+        {
+            if (Session["Username"] != null)
+            {
+                var user = new UserType();
+                user.Username = Session["Username"].ToString();
+                user.Email = Session["Email"].ToString();
+                user.Age = Int32.Parse(Session["Age"].ToString());
+                user.ProfileImageURI = Session["ProfileImageURI"].ToString();
+                user.Name = Session["Name"].ToString();
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        // POST: Users/EditUser
+        public ActionResult EditUser(UserType user)
         {
             var collection = _dbConnection._database.GetCollection<UserType>("Users");
-            return View();
+
+            var filter = new BsonDocument("Username", user.Username);
+
+            collection.FindOneAndUpdate<UserType>();
+
+            return RedirectToAction("ViewUser");
+        }
+
+        // GET: Users/Delete
+        public ActionResult Delete()
+        {
+            if (Session["Username"] != null)
+            {
+                var user = new UserType();
+                user.Username = Session["Username"].ToString();
+                user.Email = Session["Email"].ToString();
+                user.Age = Int32.Parse(Session["Age"].ToString());
+                user.ProfileImageURI = Session["ProfileImageURI"].ToString();
+                user.Name = Session["Name"].ToString();
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        // POST: Users/DeleteUser
+        public ActionResult DeleteUser()
+        {
+            var collection = _dbConnection._database.GetCollection<UserType>("Users");
+
+            var filter = new BsonDocument("Username", user.Username);
+
+            collection.FindOneAndDelete<UserType>();
+
+            return RedirectToAction("ViewUser");
+
         }
     }
 }
+
 
