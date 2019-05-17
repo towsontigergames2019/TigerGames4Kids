@@ -45,40 +45,41 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 { 
                     return View();
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Users/ViewUser");
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return Redirect("/Users/Login");
             }
         }
 
         // POST: Games/AddGame
+        [HttpPost]
         public ActionResult AddGame(GameType game)
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     collection.InsertOne(game);
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Users/ViewUser");
                 }
                 else
-                {
-                    return RedirectToAction("ViewUser");
+                {   
+                    return Redirect("/Users/ViewUser");
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return Redirect("/Users/Login");
             }
         }
 
@@ -106,6 +107,7 @@ namespace TigerGames4Kids.Controllers
         }
 
         // POST: Games/EditGame
+        [HttpPost]
         public ActionResult EditGame(GameType game)
         {
             if (Session["Username"] != null)
@@ -151,6 +153,7 @@ namespace TigerGames4Kids.Controllers
         }
 
         // POST: Games/DeleteGame
+        [HttpPost]
         public ActionResult DeleteGame(GameType game)
         {
             if (Session["Username"] != null)
