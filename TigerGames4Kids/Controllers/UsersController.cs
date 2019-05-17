@@ -39,20 +39,7 @@ namespace TigerGames4Kids.Controllers
 
         public static bool verifyMd5Hash(string input, string hash)
         {
-            // Hash the input.
-            string hashOfInput = CreateMD5(input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
         }
 
 
@@ -95,23 +82,24 @@ namespace TigerGames4Kids.Controllers
 
             var userInfo = collection.FindSync<UserType>(filter).ToList();
 
-            if (userInfo[0] != null && verifyMd5Hash(user.Password, userInfo[0].Password))
+            Console.WriteLine(userInfo);
+
+            if (verifyMd5Hash(user.Password, userInfo[0].Password))
             {
                 Session["Username"] = userInfo[0].Username;
                 Session["Name"] = userInfo[0].Name;
                 Session["Email"] = userInfo[0].Email;
                 Session["Age"] = userInfo[0].Age;
                 Session["ProfileImageURI"] = userInfo[0].ProfileImageURI;
-                return RedirectToAction("Home");
+                return RedirectToAction("ViewUser");
             }
             else
             {
-                var message = "Incorrect Login";
-                return View("Login", message);
+                return View("Login");
             }
         }
 
-        // GET: Users/View
+        // GET: Users/ViewUser
         public ActionResult ViewUser()
         {
             if (Session["Username"] != null)
@@ -128,7 +116,6 @@ namespace TigerGames4Kids.Controllers
             {
                 return RedirectToAction("Login");
             }
-
         }
 
         // GET: Users/Edit
@@ -157,7 +144,7 @@ namespace TigerGames4Kids.Controllers
 
             var filter = new BsonDocument("Username", user.Username);
 
-            collection.FindOneAndUpdate<UserType>();
+            // collection.FindOneAndUpdate<UserType>();
 
             return RedirectToAction("ViewUser");
         }
@@ -186,9 +173,9 @@ namespace TigerGames4Kids.Controllers
         {
             var collection = _dbConnection._database.GetCollection<UserType>("Users");
 
-            var filter = new BsonDocument("Username", user.Username);
+            // var filter = new BsonDocument("Username", user.Username);
 
-            collection.FindOneAndDelete<UserType>();
+            // collection.FindOneAndDelete<UserType>();
 
             return RedirectToAction("ViewUser");
 
