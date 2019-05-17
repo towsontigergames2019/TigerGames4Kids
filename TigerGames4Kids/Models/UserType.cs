@@ -28,5 +28,8 @@ namespace TigerGames4Kids.Models
 
         [BsonElement("Role")]
         public string Role { get; set; }
+
+        [BsonElement("ParentEmail")]
+        public string ParentEmail { get; set; }
     }
 }

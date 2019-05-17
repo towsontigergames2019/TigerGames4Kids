@@ -5,12 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@foreach (TigerGames4Kids.Models.GameType game in Model)
-    {
-        <a href="/Games/Show?title=@game.Title">
-            <img src=@game.Thumbnail alt="Alternate Text" />
-            <h3>@game.Title</h3>
-            <p>@game.Genre</p>
-        </a>
-    }
+<div class="container">
+    <h1>All Games</h1>
+    <div class="row">
+        @foreach (TigerGames4Kids.Models.GameType game in Model)
+        {
+            <div class="card" style="width: 18rem; margin: 10px">
+                <img class="card-img-top" src=@game.Thumbnail alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Title</h5>
+                    <p class="card-text">@game.Genre</p>
+                    <a href="/Games/Show?title=@game.Title" class="btn btn-primary">Play!</a>
+                </div>
+            </div>
+        }
+     </div>
+ </div>

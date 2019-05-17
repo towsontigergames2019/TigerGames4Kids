@@ -88,7 +88,7 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<UserType>("Games");
                     var filter = new BsonDocument("Title", title);
@@ -112,7 +112,7 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     collection.InsertOne(game);
@@ -134,7 +134,7 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<UserType>("Games");
                     var filter = new BsonDocument("Title", title);
@@ -158,7 +158,7 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                if (Session["Role"] == "Admin")
+                if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     var filter = new BsonDocument("Title", game.Title);

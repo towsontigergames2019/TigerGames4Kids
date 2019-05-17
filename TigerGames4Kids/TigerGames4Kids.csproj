@@ -321,10 +321,13 @@
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Games\AllGames.cshtml" />
     <Content Include="Views\Games\Add.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Scripts\PhaserOne\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Users\" />
+    <Folder Include="Scripts\PhaserOne\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

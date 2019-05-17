@@ -11,7 +11,16 @@
 {
     @Html.AntiForgeryToken()
     <h4 class="lead text-info">Create a new account and donate to our cause to play our games.</h4>
+    <h5>Children under 18 must provide a parent email.</h5>
     <hr />
+
+    if(@TempData["message"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <h5>@TempData["message"] </h5>
+        </div>
+    }
+    
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="form-group">
@@ -46,6 +55,13 @@
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ParentEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ParentEmail, new { @class = "form-control" })
         </div>
     </div>
 

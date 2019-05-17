@@ -53,19 +53,28 @@ namespace TigerGames4Kids.Controllers
         [HttpPost]
         public ActionResult Create(UserType user)
         {
-            var collection = _dbConnection._database.GetCollection<UserType>("Users");
 
-            var hash = CreateMD5(user.Email);
+            if (user.Age < 18 && user.ParentEmail == null)
+            {
+                TempData["message"] = "Please provide a parent email";
+                return View("Register");
+            }
+            else
+            {
+                var collection = _dbConnection._database.GetCollection<UserType>("Users");
 
-            user.ProfileImageURI = "https://www.gravatar.com/avatar/" + hash + "?s=200?r=pg&d=identicon";
+                var hash = CreateMD5(user.Email);
 
-            user.Password = CreateMD5(user.Password);
+                user.ProfileImageURI = "https://www.gravatar.com/avatar/" + hash + "?s=200?r=pg&d=identicon";
 
-            user.Role = "User";
+                user.Password = CreateMD5(user.Password.ToString());
 
-            collection.InsertOne(user);
+                user.Role = "User";
 
-            return RedirectToAction("Home");
+                collection.InsertOne(user);
+
+                return Redirect("/");
+            }
         }
 
         // GET: Users/Login
