@@ -61,6 +61,8 @@ namespace TigerGames4Kids.Controllers
 
             user.Password = CreateMD5(user.Password);
 
+            user.Role = "User";
+
             collection.InsertOne(user);
 
             return RedirectToAction("Home");
@@ -91,6 +93,7 @@ namespace TigerGames4Kids.Controllers
                 Session["Email"] = userInfo[0].Email;
                 Session["Age"] = userInfo[0].Age;
                 Session["ProfileImageURI"] = userInfo[0].ProfileImageURI;
+                Session["Role"] = userInfo[0].Role;
                 return RedirectToAction("ViewUser");
             }
             else

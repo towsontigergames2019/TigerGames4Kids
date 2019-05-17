@@ -25,5 +25,8 @@ namespace TigerGames4Kids.Models
 
         [BsonElement("ProfileImageURI")]
         public string ProfileImageURI { get; set; }
+
+        [BsonElement("Role")]
+        public string Role { get; set; }
     }
 }
