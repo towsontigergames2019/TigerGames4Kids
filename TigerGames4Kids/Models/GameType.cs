@@ -16,6 +16,9 @@ namespace TigerGames4Kids.Models
         [BsonElement("URI")]
         public string URI { get; set; }
 
+        [BsonElement("Thumbnail")]
+        public string Thumbnail { get; set; }
+
         [BsonElement("Genre")]
         public string Genre { get; set; }
     }

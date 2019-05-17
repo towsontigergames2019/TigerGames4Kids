@@ -20,11 +20,11 @@ namespace TigerGames4Kids.Controllers
         // GET: Games/AllGames
         public ActionResult AllGames()
         {
-            var collection = _dbConnection._database.GetCollection<UserType>("Games");
+            var collection = _dbConnection._database.GetCollection<GameType>("Games");
 
             var filter = new BsonDocument();
 
-            var games = collection.FindSync<UserType>(filter).ToList();
+            var games = collection.FindSync<GameType>(filter).ToList();
             return View(games);
         }
 
