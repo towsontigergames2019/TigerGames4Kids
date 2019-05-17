@@ -8,7 +8,9 @@
 
 @foreach (TigerGames4Kids.Models.GameType game in Model)
     {
-        <img src=@game.Thumbnail alt="Alternate Text" />
-        <h3>@game.Title</h3>
-        <p>@game.Genre</p>
+        <a href="/Games/Show?title=@game.Title">
+            <img src=@game.Thumbnail alt="Alternate Text" />
+            <h3>@game.Title</h3>
+            <p>@game.Genre</p>
+        </a>
     }
