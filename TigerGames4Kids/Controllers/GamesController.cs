@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using TigerGames4Kids.App_Start;
@@ -31,12 +32,20 @@ namespace TigerGames4Kids.Controllers
         // GET: Games/Show/:title
         public ActionResult Show(string title)
         {
-
+        
             var collection = _dbConnection._database.GetCollection<GameType>("Games");
 
             var filter = new BsonDocument("Title", title);
 
             var games = collection.FindSync<GameType>(filter).ToList();
+
+            var record = new RecordType();
+            record.GameId = games[0].Id;
+            record.UserId = (MongoDB.Bson.ObjectId)Session["Id"];
+            record.Timestamp = DateTime.Now;
+            var recordsCollection = _dbConnection._database.GetCollection<RecordType>("Records");
+            recordsCollection.InsertOne(record);
+
             return View(games[0]);
         }
 

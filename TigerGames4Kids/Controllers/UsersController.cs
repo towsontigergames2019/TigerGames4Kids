@@ -97,6 +97,7 @@ namespace TigerGames4Kids.Controllers
 
             if (verifyMd5Hash(user.Password, userInfo[0].Password))
             {
+                Session["Id"] = userInfo[0].Id;
                 Session["Username"] = userInfo[0].Username;
                 Session["Name"] = userInfo[0].Name;
                 Session["Email"] = userInfo[0].Email;

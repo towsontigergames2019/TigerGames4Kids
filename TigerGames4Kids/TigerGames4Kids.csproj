@@ -212,6 +212,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="App_Start\MongoDriver.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Models\RecordType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
