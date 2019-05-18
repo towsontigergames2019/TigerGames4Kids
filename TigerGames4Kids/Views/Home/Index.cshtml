@@ -43,6 +43,23 @@
     </div>
 </div>
 
+    <h3>Most Played Games</h3>
+    <div class="row">
+    @foreach (TigerGames4Kids.Models.GameType game in Model)
+        {
+            <div class="card" style="width: 18rem; margin: 10px">
+                <img class="card-img-top" src=@game.Thumbnail alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@game.Title</h5>
+                    <p class="card-text">@game.Genre</p>
+                    <a href="/Games/Show?title=@game.Title" class="btn btn-primary">Play!</a>
+                </div>
+            </div>
+        }
+     </div>
+
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <!-- Load Stripe.js on your website. -->

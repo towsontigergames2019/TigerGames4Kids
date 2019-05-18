@@ -331,7 +331,10 @@
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Scripts\PhaserOne\index.html" />
     <Content Include="Views\Users\ParentLogin.cshtml" />
+    <Content Include="Views\Games\OurGames.cshtml" />
     <Content Include="Views\Games\Delete.cshtml" />
+    <Content Include="Views\Games\ShowAnasGame.cshtml" />
+    <Content Include="Views\Games\ShowJensGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

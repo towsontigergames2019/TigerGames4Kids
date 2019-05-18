@@ -38,24 +38,74 @@ namespace TigerGames4Kids.Controllers
 
         }
 
+        // GET: Games/OurGames
+        public ActionResult OurGames()
+        {
+
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+
+        }
+
         // GET: Games/Show/:title
         public ActionResult Show(string title)
         {
-        
-            var collection = _dbConnection._database.GetCollection<GameType>("Games");
+            if (Session["Username"] != null)
+            {
+                var collection = _dbConnection._database.GetCollection<GameType>("Games");
 
-            var filter = new BsonDocument("Title", title);
+                var filter = new BsonDocument("Title", title);
 
-            var games = collection.FindSync<GameType>(filter).ToList();
+                var games = collection.FindSync<GameType>(filter).ToList();
 
-            var record = new RecordType();
-            record.GameTitle = games[0].Title;
-            record.UserId = (MongoDB.Bson.ObjectId)Session["Id"];
-            record.Timestamp = DateTime.Now;
-            var recordsCollection = _dbConnection._database.GetCollection<RecordType>("Records");
-            recordsCollection.InsertOne(record);
+                var record = new RecordType();
+                record.GameTitle = games[0].Title;
+                record.UserId = (MongoDB.Bson.ObjectId)Session["Id"];
+                record.Timestamp = DateTime.Now;
+                var recordsCollection = _dbConnection._database.GetCollection<RecordType>("Records");
+                recordsCollection.InsertOne(record);
 
-            return View(games[0]);
+                return View(games[0]);
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+        }
+
+        //show Anas games
+        public ActionResult ShowAnasGame(string title)
+        {
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+        }
+
+        //show Jens games
+        public ActionResult ShowJensGame(string title)
+        {
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
         }
 
         // GET: Games/Add
