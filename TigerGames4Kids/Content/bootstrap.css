@@ -5636,6 +5636,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     margin-bottom: 2rem;
     background-color: transparent;
     border-radius: 555px 25px 15px 25px/25px 5px 35px 555px;
+  #  background: url(hannah-rodrigo-320734-unsplash.jpg);
 }
 
 @media (min-width: 576px) {
