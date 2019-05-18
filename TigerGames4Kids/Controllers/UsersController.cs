@@ -81,6 +81,7 @@ namespace TigerGames4Kids.Controllers
         public ActionResult Login()
         {
             return View();
+
         }
 
         // POST: Users/Token
@@ -111,6 +112,46 @@ namespace TigerGames4Kids.Controllers
                 return View("Login");
             }
         }
+
+        // GET: Users/ParentLogin
+        public ActionResult ParentLogin()
+        {
+            return View();
+        }
+
+        public ActionResult SubmitParentLogin(UserType user)
+        {
+            if (user.ParentEmail != null || user.Username != null)
+            {
+
+                var collection = _dbConnection._database.GetCollection<UserType>("Users");
+
+                var filter = new BsonDocument("Username", user.Username);
+
+                var userInfo = collection.FindSync<UserType>(filter).ToList();
+                var check = (userInfo[0].ParentEmail.Equals(user.ParentEmail));
+                if (check)
+                {
+                    Session["Id"] = userInfo[0].Id;
+                    Session["Username"] = userInfo[0].Username;
+                    Session["Name"] = userInfo[0].Name;
+                    Session["Email"] = userInfo[0].Email;
+                    Session["Age"] = userInfo[0].Age;
+                    Session["ProfileImageURI"] = userInfo[0].ProfileImageURI;
+                    Session["Role"] = userInfo[0].Role;
+                    return RedirectToAction("ViewUser");
+                }
+                else
+                {
+                    return View("Login");
+                }
+            }
+            else
+            {
+                return View("Login");
+            }
+        }
+
 
         // GET: Users/ViewUser
         public ActionResult ViewUser()
