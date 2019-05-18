@@ -7,7 +7,12 @@
 
     <div class="container">
         <h1>All Games</h1>
-        <a href="/Games/Add" class="btn btn-success" style="display:inline-block; margin: 10px auto 10px auto;">Add a New Game!</a>
+        <a href="/Games/Add" class="btn btn-success" style="display:inline-block; margin: 10px auto 10px auto;">
+            Add a New Game!
+        </a>
+        <a href="/Games/OurGames" class="btn btn-success" style="display:inline-block; margin: 10px auto 10px auto;">
+            Check out games made by us!
+        </a>
         <div class="row">
             @foreach (TigerGames4Kids.Models.GameType game in Model)
             {
