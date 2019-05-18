@@ -115,7 +115,7 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return View();
                 }
             }
             else
@@ -161,12 +161,12 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return View();
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("AllGames");
             }
         }
 

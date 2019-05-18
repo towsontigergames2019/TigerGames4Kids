@@ -326,11 +326,10 @@
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Scripts\PhaserOne\index.html" />
     <Content Include="Views\Users\ParentLogin.cshtml" />
+    <Content Include="Views\Games\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Users\" />
-    <Folder Include="Scripts\PhaserOne\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
