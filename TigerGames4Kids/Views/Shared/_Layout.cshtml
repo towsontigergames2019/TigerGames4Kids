@@ -1,38 +1,43 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Mvc.Html;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title TigerGames4Kids</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="../../Scripts/PhaserOne/javascript/mainPhaser.js" type="module"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({
+    <script>
+(adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-9322117613473291",
         enable_page_level_ads: true
-        });
-    </script>
+        });</script>
 </head>
 <body style="padding-top: 0px">
-    <div class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("TigerGames4Kids", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Games", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Leaderboards", "About", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">TigerGames4Kids</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Games/AllGames">Games</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Users/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Users/Login">Login</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
     <div class="container" style="padding-top: 30px">
         @RenderBody()
         <hr />
