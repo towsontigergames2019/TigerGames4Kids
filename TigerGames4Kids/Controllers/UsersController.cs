@@ -117,13 +117,21 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
+                var collection = _dbConnection._database.GetCollection<GameType>("Records");
+                var filter = new BsonDocument("UserId", (MongoDB.Bson.ObjectId)Session["Id"]);
+                var records = collection.FindSync<RecordType>(filter).ToList();
+
                 var user = new UserType();
                 user.Username = Session["Username"].ToString();
                 user.Email = Session["Email"].ToString();
                 user.Age = Int32.Parse(Session["Age"].ToString());
                 user.ProfileImageURI = Session["ProfileImageURI"].ToString();
                 user.Name = Session["Name"].ToString();
-                return View(user);
+
+                var viewModel = new UserRecordViewModel();
+                viewModel.User = user;
+                viewModel.Records = records;
+                return View(viewModel);
             }
             else
             {

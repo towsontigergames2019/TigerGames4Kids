@@ -40,7 +40,7 @@ namespace TigerGames4Kids.Controllers
             var games = collection.FindSync<GameType>(filter).ToList();
 
             var record = new RecordType();
-            record.GameId = games[0].Id;
+            record.GameTitle = games[0].Title;
             record.UserId = (MongoDB.Bson.ObjectId)Session["Id"];
             record.Timestamp = DateTime.Now;
             var recordsCollection = _dbConnection._database.GetCollection<RecordType>("Records");

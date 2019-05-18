@@ -12,8 +12,8 @@ namespace TigerGames4Kids.Models
         [BsonElement("UserId")]
         public ObjectId UserId { get; set; }
 
-        [BsonElement("GameId")]
-        public ObjectId GameId { get; set; }
+        [BsonElement("GameTitle")]
+        public String GameTitle { get; set; }
 
         [BsonElement("Timestamp")]
         public DateTime Timestamp { get; set; }

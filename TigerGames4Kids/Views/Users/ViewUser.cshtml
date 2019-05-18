@@ -1,11 +1,19 @@
-﻿@Model TigerGames4Kids.Models.UserType
+﻿@Model TigerGames4Kids.Models.UserRecordViewModel;
 
 @{
     ViewBag.Title = "ViewUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<img src=@Model.ProfileImageURI alt="Alternate Text" />
-<h2>@Model.Name</h2>
-<h3>@Model.Username</h3>
-<h3>@Model.Age</h3>
+<img src=@Model.User.ProfileImageURI alt="Alternate Text" />
+<h2>@Model.User.Name</h2>
+<h3>@Model.User.Username</h3>
+<h3>@Model.User.Age</h3>
+
+
+<ul class="list-group">
+    @foreach (TigerGames4Kids.Models.RecordType record in Model.Records)
+    {
+        <li class="list-group-item">@record.GameTitle - @record.Timestamp</li>
+    }
+</ul>
