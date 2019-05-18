@@ -80,6 +80,34 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
+        //show Anas games
+        public ActionResult ShowAnasGame(string title)
+        {
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+        }
+
+        //show Jens games
+        public ActionResult ShowJensGame(string title)
+        {
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+        }
+
         // GET: Games/Add
         public ActionResult Add()
         {
