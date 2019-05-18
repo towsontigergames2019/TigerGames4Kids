@@ -157,7 +157,7 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-                var collection = _dbConnection._database.GetCollection<GameType>("Records");
+                var collection = _dbConnection._database.GetCollection<RecordType>("Records");
                 var filter = new BsonDocument("UserId", (MongoDB.Bson.ObjectId)Session["Id"]);
                 var records = collection.FindSync<RecordType>(filter).ToList();
 

@@ -5,8 +5,7 @@
 <div class="jumbotron" style="text-align: center">
     <h1 class="display-2">TigerGames4Kids</h1>
     <p class="lead">Join TigerGames4Kids and start playing today!</p>
-    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("ParentRegister", "Account")';return false;">Sign Up Your Child</button>
-    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Register", "Account")';return false;">Over 18 and Want to Play?</button>
+    <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Register", "Users")';return false;">Register</button>
     <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Donation", "Home")';return false;">Donate</button>
     <button class="btn btn-danger btn-lg" onclick="location.href='@Url.Action("ParentLogin", "Users")';return false;">Parent Login</button>
 
@@ -39,17 +38,15 @@
             <div class="card-body">
                 <h4 class="card-title">Keep Tigers Playing</h4>
                 <p>Donations help us get new games!</p>
-                <button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-                        id="checkout-button-sku_EvgYbbP15hADRi"
-                        role="link">
-                    Donate Here!
+                <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Donation", "Home")';return false;">
+                    Donate
                 </button>
-
             </div>
         </div>
     </div>
 
     <h3>Top Games</h3>
+
 
 </div>
 
