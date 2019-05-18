@@ -106,7 +106,7 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return View();
                 }
             }
             else
