@@ -91,7 +91,7 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return Redirect("/Users/ViewUser");
+                    return View();
                 }
             }
             else
@@ -110,11 +110,11 @@ namespace TigerGames4Kids.Controllers
                 {
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     collection.InsertOne(game);
-                    return Redirect("/Users/ViewUser");
+                    return Redirect("/Games/AllGames");
                 }
                 else
                 {   
-                    return Redirect("/Users/ViewUser");
+                    return Redirect("/Games/AllGames");
                 }
             }
             else
@@ -137,7 +137,7 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return View();
                 }
             }
             else
@@ -183,12 +183,12 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return View();
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("AllGames");
             }
         }
 

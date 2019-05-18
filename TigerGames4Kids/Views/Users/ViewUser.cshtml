@@ -4,11 +4,12 @@
 }
 
 
-<img src=@Model.User.ProfileImageURI alt="Alternate Text" />
-<h2>@Model.User.Name</h2>
-<h3>@Model.User.Username</h3>
-<h3>@Model.User.Age</h3>
+<div class="jumbotron bg-warning" style="margin:0 auto 20px auto; padding-top: 20px;  padding-bottom: 0px;">
+    <img src=@Model.User.ProfileImageURI alt="Alternate Text" />
+    <h1 align="right">Welcome to your profile <span>@Model.User.Name</span></h1>
+</div>
 
+<h2 style="margin:0 auto 20px auto;"> Recently Played Games </h2>
 
 <ul class="list-group">
     @foreach (TigerGames4Kids.Models.RecordType record in Model.Records)
@@ -17,6 +18,62 @@
     }
 </ul>
 
+<div class="container" style="margin:15px auto 15px auto;">
+    <h2> Profile Manager</h2>
+    <h4 style="margin: 0 auto 0 15px;">User: @Model.User.Username</h4>
+    <h4 style="margin: 0 auto 0 15px;">Age: @Model.User.Age</h4>
+
+    <div class="row col-md-3" style="margin:10px">
+        <a href="/Users/Delete" class="btn btn-danger" style="display:inline-block; margin: 0 auto 0 auto;">Delete Account</a>
+        <a href="/Users/Edit" class="btn btn-success" style="display:inline-block; margin: 0 auto 0 auto;">Edit Profile</a>
+
+        @if (@Model.User.Age > 18)
+        {
+
+            <button style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+                    id="checkout-button-sku_EvgYbbP15hADRi"
+                    role="link">
+                Donate to Start Playing!
+            </button>
+        }
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3"></script>
+
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+
+    <script>var stripe = Stripe('pk_test_shXmbtUF5yWvNppctGKcerUp00tspybH8w');
+
+        var checkoutButton = document.getElementById('checkout-button-sku_EvgYbbP15hADRi');
+        checkoutButton.addEventListener('click', function () {
+            // When the customer clicks on the button, redirect
+            // them to Checkout.
+            stripe.redirectToCheckout({
+                items: [{ sku: 'sku_EvgYbbP15hADRi', quantity: 1 }],
+
+                // Note that it is not guaranteed your customers will be redirected to this
+                // URL *100%* of the time, it's possible that they could e.g. close the
+                // tab between form submission and the redirect.
+                successUrl: window.location.protocol + '//www.tigergames4kids.com/success',
+                cancelUrl: window.location.protocol + '//www.tigergames4kids.com/canceled',
+            })
+                .then(function (result) {
+                    if (result.error) {
+                        // If `redirectToCheckout` fails due to a browser or network
+                        // error, display the localized error message to your customer.
+                        var displayError = document.getElementById('error-message');
+                        displayError.textContent = result.error.message;
+                    }
+                });
+        });</script>
+}
 
 
 <script type="text/javascript">

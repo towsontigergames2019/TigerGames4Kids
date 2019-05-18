@@ -1,16 +1,16 @@
 ﻿@model TigerGames4Kids.Models.GameType
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add New Game</h2>
+<h2>Edit Game</h2>
 
-@using (Html.BeginForm("AddGame", "Games"))
+@using (Html.BeginForm("EditGame", "Games"))
 {
     @Html.AntiForgeryToken()
-    <h4 class="lead text-info">Add a new game.</h4>
+    <h4 class="lead text-info">Edit this game.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
@@ -44,7 +44,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-secondary" value="Add Game" />
+            <input type="submit" class="btn btn-secondary" value="Edit Game" />
 
             <div id="error-message"></div>
         </div>
