@@ -38,6 +38,22 @@ namespace TigerGames4Kids.Controllers
 
         }
 
+        // GET: Games/OurGames
+        public ActionResult OurGames()
+        {
+
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+
+        }
+
         // GET: Games/Show/:title
         public ActionResult Show(string title)
         {
