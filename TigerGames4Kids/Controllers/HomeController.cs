@@ -23,7 +23,7 @@ namespace TigerGames4Kids.Controllers
         public ActionResult Index()
         {
             var collection = _dbConnection._database.GetCollection<RecordType>("Records");
-            var filter = new BsonDocument("UserId", (MongoDB.Bson.ObjectId)Session["Id"]);
+            var filter = new BsonDocument();
             var records = collection.FindSync<RecordType>(filter).ToList();
 
             return View();
