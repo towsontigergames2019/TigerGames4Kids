@@ -26,7 +26,26 @@ namespace TigerGames4Kids.Controllers
             var filter = new BsonDocument();
             var records = collection.FindSync<RecordType>(filter).ToList();
 
-            return View();
+            var recordGroup = records.GroupBy(i => i.GameTitle);
+            var enumerator = recordGroup.GetEnumerator();
+
+            var counter = 0;
+            var bestGameTitle = "";
+            
+            foreach( var group in recordGroup)
+            {
+                if (group.Count() > counter)
+                {
+                    counter = group.Count();
+                    bestGameTitle = group.Key;
+                }
+            }
+
+            var gameCollection = _dbConnection._database.GetCollection<GameType>("Games");
+            var gameFilter = new BsonDocument("Title", bestGameTitle);
+            var games = gameCollection.FindSync<GameType>(gameFilter).ToList();
+
+            return View(games[0]);
         }
 
         public ActionResult About()

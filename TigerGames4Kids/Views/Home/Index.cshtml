@@ -45,8 +45,15 @@
         </div>
     </div>
 
-    <h3>Top Games</h3>
-
+    <h3>Most Played Game</h3>
+        <div class="card" style="width: 18rem; margin: 10px">
+                <img class="card-img-top" src=@Model.Thumbnail alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Title</h5>
+                    <p class="card-text">@Model.Genre</p>
+                    <a href="/Games/Show?title=@Model.Title" class="btn btn-primary">Play!</a>
+                </div>
+        </div>
 
 </div>
 
