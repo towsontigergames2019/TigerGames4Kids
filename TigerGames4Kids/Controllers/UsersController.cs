@@ -6,6 +6,7 @@ using TigerGames4Kids.Models;
 using System.Text;
 using MongoDB.Driver;
 using System;
+using System.Web.UI;
 
 namespace TigerGames4Kids.Controllers
 {
@@ -94,8 +95,6 @@ namespace TigerGames4Kids.Controllers
 
             var userInfo = collection.FindSync<UserType>(filter).ToList();
 
-            Console.WriteLine(userInfo);
-
             if (verifyMd5Hash(user.Password, userInfo[0].Password))
             {
                 Session["Id"] = userInfo[0].Id;
@@ -168,6 +167,7 @@ namespace TigerGames4Kids.Controllers
                 user.Age = Int32.Parse(Session["Age"].ToString());
                 user.ProfileImageURI = Session["ProfileImageURI"].ToString();
                 user.Name = Session["Name"].ToString();
+                user.Id = (MongoDB.Bson.ObjectId)Session["Id"];
 
                 var viewModel = new UserRecordViewModel();
                 viewModel.User = user;

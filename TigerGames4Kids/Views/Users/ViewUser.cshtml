@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <img src=@Model.User.ProfileImageURI alt="Alternate Text" />
 <h2>@Model.User.Name</h2>
 <h3>@Model.User.Username</h3>
@@ -17,3 +18,13 @@
         <li class="list-group-item">@record.GameTitle - @record.Timestamp</li>
     }
 </ul>
+
+
+
+<script type="text/javascript">
+        var localStore = window['localStorage'];
+        @{
+            @:localStore.setItem('userId', '@Model.User.Id');
+        }
+</script>
+

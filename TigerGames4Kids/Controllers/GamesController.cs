@@ -21,12 +21,21 @@ namespace TigerGames4Kids.Controllers
         // GET: Games/AllGames
         public ActionResult AllGames()
         {
-            var collection = _dbConnection._database.GetCollection<GameType>("Games");
 
-            var filter = new BsonDocument();
+            if (Session["Username"] != null)
+            {
+                var collection = _dbConnection._database.GetCollection<GameType>("Games");
 
-            var games = collection.FindSync<GameType>(filter).ToList();
-            return View(games);
+                var filter = new BsonDocument();
+
+                var games = collection.FindSync<GameType>(filter).ToList();
+                return View(games);
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+
         }
 
         // GET: Games/Show/:title
