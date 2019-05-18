@@ -216,8 +216,13 @@
     <Compile Include="Models\UserRecordViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fontawesome-iconpicker\css\fontawesome-iconpicker.css" />
+    <Content Include="Content\fontawesome-iconpicker\css\fontawesome-iconpicker.min.css" />
+    <Content Include="Content\fontawesome-iconpicker\js\fontawesome-iconpicker.js" />
+    <Content Include="Content\fontawesome-iconpicker\js\fontawesome-iconpicker.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
