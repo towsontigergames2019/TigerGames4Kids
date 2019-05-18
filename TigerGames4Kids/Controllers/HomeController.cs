@@ -10,6 +10,8 @@ namespace TigerGames4Kids.Controllers
     {
         public ActionResult Index()
         {
+
+
             return View();
         }
 
