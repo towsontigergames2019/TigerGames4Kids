@@ -336,6 +336,7 @@
     <Content Include="Views\Games\Delete.cshtml" />
     <Content Include="Views\Games\ShowAnasGame.cshtml" />
     <Content Include="Views\Games\ShowJensGame.cshtml" />
+    <Content Include="Views\Games\ShowMariasGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
