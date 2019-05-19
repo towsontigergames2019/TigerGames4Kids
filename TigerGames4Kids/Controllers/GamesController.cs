@@ -29,7 +29,11 @@ namespace TigerGames4Kids.Controllers
                 var filter = new BsonDocument();
 
                 var games = collection.FindSync<GameType>(filter).ToList();
-                return View(games);
+
+                var viewModel = new UserGameViewModel();
+                viewModel.Games = games;
+                viewModel.User = Session;
+                return View(viewModel);
             }
             else
             {
@@ -124,7 +128,7 @@ namespace TigerGames4Kids.Controllers
             }
             else
             {
-                return Redirect("/Users/Login");
+                return Redirect("/Games/AllGames");
             }
         }
 
@@ -147,7 +151,7 @@ namespace TigerGames4Kids.Controllers
             }
             else
             {
-                return Redirect("/Users/Login");
+                return Redirect("/Games/AllGames");
             }
         }
 
@@ -158,9 +162,9 @@ namespace TigerGames4Kids.Controllers
             {
                 if (Session["Role"].ToString() == "Admin")
                 {
-                    var collection = _dbConnection._database.GetCollection<UserType>("Games");
+                    var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     var filter = new BsonDocument("Title", title);
-                    var games = collection.FindSync<UserType>(filter).ToList();
+                    var games = collection.FindSync<GameType>(filter).ToList();
                     return View(games[0]);
                 }
                 else
@@ -170,7 +174,7 @@ namespace TigerGames4Kids.Controllers
             }
             else
             {
-                return RedirectToAction("Login");
+                return Redirect("/Games/AllGames");
             }
         }
 
@@ -188,12 +192,12 @@ namespace TigerGames4Kids.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Games/AllGames");
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return Redirect("/Games/AllGames");
             }
         }
 
@@ -204,9 +208,9 @@ namespace TigerGames4Kids.Controllers
             {
                 if (Session["Role"].ToString() == "Admin")
                 {
-                    var collection = _dbConnection._database.GetCollection<UserType>("Games");
+                    var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     var filter = new BsonDocument("Title", title);
-                    var games = collection.FindSync<UserType>(filter).ToList();
+                    var games = collection.FindSync<GameType>(filter).ToList();
                     return View(games[0]);
                 }
                 else
@@ -216,7 +220,7 @@ namespace TigerGames4Kids.Controllers
             }
             else
             {
-                return RedirectToAction("AllGames");
+                return Redirect("/Users/Login");
             }
         }
 
@@ -231,16 +235,16 @@ namespace TigerGames4Kids.Controllers
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
                     var filter = new BsonDocument("Title", game.Title);
                     collection.DeleteOne(filter);
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Games/AllGames");
                 }
                 else
                 {
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Users/Login");
                 }
             }
             else
             {
-                return RedirectToAction("Login");
+                return Redirect("/Users/Login");
             }
         }
     }
