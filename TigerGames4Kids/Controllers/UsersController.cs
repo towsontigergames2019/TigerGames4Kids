@@ -84,6 +84,11 @@ namespace TigerGames4Kids.Controllers
             return View();
         }
 
+        public ActionResult ParentLogin()
+        {
+            return View();
+        }
+
         // POST: Users/Token
         [HttpPost]
         public ActionResult Token(UserType user)
