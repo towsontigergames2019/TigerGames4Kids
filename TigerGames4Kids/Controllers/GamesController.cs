@@ -192,9 +192,12 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
-        public ActionResult HighScores()
+        public ActionResult HighScores(String gameTitle)
         {
-            return View();
+            var collection = _dbConnection._database.GetCollection<ScoreType>("Scores");
+            var filter = new BsonDocument("GameTitle", gameTitle);
+            var scores = collection.FindSync<ScoreType>(filter).ToList();
+            return View(scores);
         }
 
         // POST: Games/EditGame

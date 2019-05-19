@@ -1,8 +1,28 @@
 ﻿@{
-   
+
     ViewBag.Title = "HighScores";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (@Model[0].GameTitle == " spaceshootermonkey")
+{
+    <h1>Jen's Game Leaderboard</h1>
+}
 
+@if (@Model[0].GameTitle == " shootermonkey")
+{
+    <h1>Maria's Game Leaderboard</h1>
+}
+
+@if (@Model[0].GameTitle == " buttonclicker")
+{
+    <h1>Ana's Button Game Leaderboard</h1>
+}
+
+<ul class="list-group">
+    @foreach (TigerGames4Kids.Models.ScoreType score in Model)
+    {
+        <li class="list-group-item">@score.Username - @score.Score</li>
+    }
+</ul>
 
