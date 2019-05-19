@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -89,8 +91,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
@@ -103,8 +105,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
@@ -117,8 +119,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
@@ -192,9 +194,14 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
-        public ActionResult HighScores()
+        public ActionResult HighScores(String gameTitle)
         {
-            return View();
+            var collection = _dbConnection._database.GetCollection<ScoreType>("Scores");
+            var filter = new BsonDocument("GameTitle", gameTitle);
+            List<ScoreType> scores = new List<ScoreType>();
+            scores = collection.FindSync<ScoreType>(filter).ToList();
+            List<ScoreType> orderedScores = scores.OrderByDescending(e => Int32.Parse(e.Score)).ToList();
+            return View(orderedScores);
         }
 
         // POST: Games/EditGame

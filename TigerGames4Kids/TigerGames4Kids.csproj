@@ -216,6 +216,7 @@
     <Compile Include="Models\UserRecordViewModel.cs" />
     <Compile Include="Models\UserGameViewModel.cs" />
     <Compile Include="Controllers\StripeController.cs" />
+    <Compile Include="Models\ScoreType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fontawesome-iconpicker\css\fontawesome-iconpicker.css" />
@@ -339,6 +340,7 @@
     <Content Include="Views\Games\ShowJensGame.cshtml" />
     <Content Include="Views\Games\ShowMariasGame.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Games\HighScores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
