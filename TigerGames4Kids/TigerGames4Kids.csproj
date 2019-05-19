@@ -215,6 +215,7 @@
     <Compile Include="Models\RecordType.cs" />
     <Compile Include="Models\UserRecordViewModel.cs" />
     <Compile Include="Models\UserGameViewModel.cs" />
+    <Compile Include="Controllers\StripeController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fontawesome-iconpicker\css\fontawesome-iconpicker.css" />
