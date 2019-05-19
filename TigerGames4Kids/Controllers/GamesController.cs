@@ -112,6 +112,20 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
+        //show MArias games
+        public ActionResult ShowMariasGame(string title)
+        {
+            if (Session["Username"] != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return Redirect("/Users/Login");
+            }
+        }
+
         // GET: Games/Add
         public ActionResult Add()
         {
