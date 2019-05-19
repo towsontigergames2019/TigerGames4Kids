@@ -89,8 +89,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
@@ -103,8 +103,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
@@ -117,8 +117,8 @@ namespace TigerGames4Kids.Controllers
         {
             if (Session["Username"] != null)
             {
-
-                return View();
+                var username = Session["Username"];
+                return View(username);
             }
             else
             {
