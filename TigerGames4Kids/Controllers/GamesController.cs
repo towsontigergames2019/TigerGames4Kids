@@ -187,17 +187,19 @@ namespace TigerGames4Kids.Controllers
                 if (Session["Role"].ToString() == "Admin")
                 {
                     var collection = _dbConnection._database.GetCollection<GameType>("Games");
+                    var filter = new BsonDocument("Title", game.Title);
+                    collection.DeleteOne(filter);
                     collection.InsertOne(game);
-                    return RedirectToAction("ViewUser");
+                    return Redirect("/Games/AllGames");
                 }
                 else
                 {
-                    return Redirect("/Games/AllGames");
+                    return Redirect("/Users/Login");
                 }
             }
             else
             {
-                return Redirect("/Games/AllGames");
+                return Redirect("/Users/Login");
             }
         }
 
