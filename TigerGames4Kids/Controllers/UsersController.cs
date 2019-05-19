@@ -175,7 +175,9 @@ namespace TigerGames4Kids.Controllers
 
             user.Password = CreateMD5(originalUser[0].Password.ToString());
 
-            user.Role = "User";
+            user.Role = originalUser[0].Role;
+
+            user.ParentEmail = originalUser[0].ParentEmail;
 
             collection.InsertOne(user);
             var userInfo = collection.FindSync<UserType>(filter).ToList();
@@ -229,6 +231,19 @@ namespace TigerGames4Kids.Controllers
 
             return Redirect("/Users/Login");
 
+        }
+
+        public ActionResult Logout()
+        {
+            Session["Id"] = null;
+            Session["Username"] = null;
+            Session["Name"] = null;
+            Session["Email"] = null;
+            Session["Age"] = null;
+            Session["ProfileImageURI"] = null;
+            Session["Role"] = null;
+
+            return Redirect("/");
         }
     }
 }
