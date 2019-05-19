@@ -65,5 +65,11 @@ namespace TigerGames4Kids.Controllers
             return View();
         }
 
+        //after donation, redirect
+        public ActionResult Success()
+        {
+            ViewBag.Message = "Your Donation Was Successful!";
+            return View();
+        }
     }
 }
