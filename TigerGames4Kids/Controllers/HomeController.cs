@@ -71,5 +71,11 @@ namespace TigerGames4Kids.Controllers
             ViewBag.Message = "Your Donation Was Successful!";
             return View();
         }
+
+        public ActionResult Canceled()
+        {
+            ViewBag.Message = "Your Donation Failed";
+            return View();
+        }
     }
 }

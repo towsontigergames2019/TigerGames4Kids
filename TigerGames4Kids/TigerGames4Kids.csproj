@@ -341,6 +341,7 @@
     <Content Include="Views\Games\ShowMariasGame.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
     <Content Include="Views\Games\HighScores.cshtml" />
+    <Content Include="Views\Home\Canceled.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
