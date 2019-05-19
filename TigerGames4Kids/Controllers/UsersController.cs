@@ -165,13 +165,15 @@ namespace TigerGames4Kids.Controllers
 
             var filter = new BsonDocument("Username", user.Username);
 
+            var originalUser = collection.FindSync<UserType>(filter).ToList();
+
             collection.DeleteOne(filter);
 
             var hash = CreateMD5(user.Email);
 
             user.ProfileImageURI = "https://www.gravatar.com/avatar/" + hash + "?s=200?r=pg&d=identicon";
 
-            user.Password = CreateMD5(user.Password.ToString());
+            user.Password = CreateMD5(originalUser[0].Password.ToString());
 
             user.Role = "User";
 
