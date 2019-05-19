@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -196,8 +198,10 @@ namespace TigerGames4Kids.Controllers
         {
             var collection = _dbConnection._database.GetCollection<ScoreType>("Scores");
             var filter = new BsonDocument("GameTitle", gameTitle);
-            var scores = collection.FindSync<ScoreType>(filter).ToList();
-            return View(scores);
+            List<ScoreType> scores = new List<ScoreType>();
+            scores = collection.FindSync<ScoreType>(filter).ToList();
+            List<ScoreType> orderedScores = scores.OrderByDescending(e => Int32.Parse(e.Score)).ToList();
+            return View(orderedScores);
         }
 
         // POST: Games/EditGame
