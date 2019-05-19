@@ -193,12 +193,9 @@ namespace TigerGames4Kids.Controllers
         public ActionResult DeleteUser()
         {
             var collection = _dbConnection._database.GetCollection<UserType>("Users");
-
-            // var filter = new BsonDocument("Username", user.Username);
-
-            // collection.FindOneAndDelete<UserType>();
-
-            return RedirectToAction("ViewUser");
+            var filter = new BsonDocument("Username", Session["Username"].ToString());
+            collection.DeleteOne(filter);
+            return Redirect("/Users/Login");
 
         }
     }
