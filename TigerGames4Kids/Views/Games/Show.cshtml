@@ -9,11 +9,11 @@
 <iframe src=@Model.URI width="800" height="500" scrolling="none" frameborder="0"></iframe>
 
 <body>
-    <meta property="og:url" content="http://tutigergames.azurewebsites.net/" />
+    <meta property="og:url" content=@Model.URI />
     <meta property="og:type" content="Games" />
-    <meta property="og:title" content="Tiger Games 4 Kids" />
-    <meta property="og:description" content="Your description" />
-    <meta property="og:image" content="" />
+    <meta property="og:title" content=@Model.Title />
+    <meta property="og:description" content="Game" />
+    <meta property="og:image" content=@Model.Thumbnail />
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
@@ -28,7 +28,6 @@
 
     <!-- Your share button code -->
     <div class="fb-share-button"
-         data-href="http://tutigergames.azurewebsites.net/"
-         data-layout="button_count">
+         data-href=@Model.URI data-layout="button_count">
     </div>
 </body>
