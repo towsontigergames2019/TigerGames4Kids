@@ -192,6 +192,11 @@ namespace TigerGames4Kids.Controllers
             }
         }
 
+        public ActionResult HighScores()
+        {
+            return View();
+        }
+
         // POST: Games/EditGame
         [HttpPost]
         public ActionResult EditGame(GameType game)
