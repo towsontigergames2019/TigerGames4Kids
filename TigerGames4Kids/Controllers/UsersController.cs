@@ -94,7 +94,7 @@ namespace TigerGames4Kids.Controllers
 
             var userInfo = collection.FindSync<UserType>(filter).ToList();
 
-            if (verifyMd5Hash(user.Password, userInfo[0].Password))
+            if (userInfo.Count() > 0 && verifyMd5Hash(user.Password, userInfo[0].Password))
             {
                 Session["Id"] = userInfo[0].Id;
                 Session["Username"] = userInfo[0].Username;
@@ -165,7 +165,26 @@ namespace TigerGames4Kids.Controllers
 
             var filter = new BsonDocument("Username", user.Username);
 
-            // collection.FindOneAndUpdate<UserType>();
+            collection.DeleteOne(filter);
+
+            var hash = CreateMD5(user.Email);
+
+            user.ProfileImageURI = "https://www.gravatar.com/avatar/" + hash + "?s=200?r=pg&d=identicon";
+
+            user.Password = CreateMD5(user.Password.ToString());
+
+            user.Role = "User";
+
+            collection.InsertOne(user);
+            var userInfo = collection.FindSync<UserType>(filter).ToList();
+
+            Session["Id"] = userInfo[0].Id;
+            Session["Username"] = userInfo[0].Username;
+            Session["Name"] = userInfo[0].Name;
+            Session["Email"] = userInfo[0].Email;
+            Session["Age"] = userInfo[0].Age;
+            Session["ProfileImageURI"] = userInfo[0].ProfileImageURI;
+            Session["Role"] = userInfo[0].Role;
 
             return RedirectToAction("ViewUser");
         }
@@ -195,6 +214,17 @@ namespace TigerGames4Kids.Controllers
             var collection = _dbConnection._database.GetCollection<UserType>("Users");
             var filter = new BsonDocument("Username", Session["Username"].ToString());
             collection.DeleteOne(filter);
+
+
+            Session["Id"] = null;
+            Session["Username"] = null;
+            Session["Name"] = null;
+            Session["Email"] = null;
+            Session["Age"] = null;
+            Session["ProfileImageURI"] = null;
+            Session["Role"] = null;
+
+
             return Redirect("/Users/Login");
 
         }
